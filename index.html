@@ -1,1 +1,150 @@
-teste
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barbearia Hochsheidt</title>
+    <style>
+        /* Estilo geral */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Header com o logo e menu */
+        header {
+            background-color: #111;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            width: 120px;
+        }
+
+        /* Menu */
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ddd;
+        }
+
+        /* Botão de menu para dispositivos móveis */
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 30px;
+            color: #fff;
+        }
+
+        /* Menu responsivo */
+        .nav-links {
+            display: flex;
+        }
+
+        .nav-links.active {
+            display: block;
+            position: absolute;
+            background-color: #111;
+            width: 100%;
+            top: 60px;
+            left: 0;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .nav-links a {
+            display: block;
+            padding: 15px;
+            font-size: 20px;
+        }
+
+        /* Main content */
+        main {
+            margin-top: 60px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+            }
+
+            .nav-links a {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header com o logo e menu -->
+    <header>
+        <img src="logo.png" alt="Logo Barbearia Hochsheidt" class="logo">
+        <nav>
+            <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+            <div class="nav-links" id="nav-links">
+                <a href="#">Início</a>
+                <a href="#">Serviços</a>
+                <a href="#">Sobre</a>
+                <a href="#">Contato</a>
+                <a href="#">Blog</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Conteúdo principal -->
+    <main>
+        <h1>Bem-vindo à Barbearia Hochsheidt</h1>
+        <p>Experimente o melhor corte de cabelo e serviço de barbearia na cidade. Venha conhecer nossa equipe e ambiente!</p>
+    </main>
+
+    <script>
+        // Toggling do menu para dispositivos móveis
+        const menuToggle = document.getElementById('menu-toggle');
+        const navLinks = document.getElementById('nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
