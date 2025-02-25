@@ -49,6 +49,12 @@
             color: #fff;
         }
 
+        /* Logo */
+        .logo {
+            width: 150px; /* Ajuste o tamanho conforme necessário */
+            margin-bottom: 20px;
+        }
+
         /* Campos de entrada */
         .input-field {
             margin-bottom: 15px;
@@ -151,6 +157,7 @@
 <body>
     <!-- Tela de Login -->
     <div class="login-container" id="login-container">
+        <img src="logo.png" alt="Logo Barbearia Hochsheidt" class="logo">
         <h2>Bem-vindo à Barbearia Hochsheidt</h2>
         <form id="login-form">
             <input type="text" id="username" class="input-field" placeholder="Usuário" required>
@@ -167,6 +174,7 @@
 
     <!-- Tela de Registro -->
     <div class="register-container" id="register-container" style="display: none;">
+        <img src="logo.png" alt="Logo Barbearia Hochsheidt" class="logo">
         <h2>Registrar Nova Conta</h2>
         <form id="register-form">
             <input type="text" id="new-username" class="input-field" placeholder="Nome de Usuário" required>
