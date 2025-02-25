@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Barbearia Hochsheidt</title>
+    <style>
+        /* Estilo geral */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        /* Contêiner de login e registro */
+        .login-container, .register-container {
+            background-color: #111;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 400px; /* Limita a largura no desktop */
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: slideUp 0.8s ease-out forwards;
+        }
+
+        /* Animação de deslizamento */
+        @keyframes slideUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .login-container h2, .register-container h2 {
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        /* Campos de entrada */
+        .input-field {
+            margin-bottom: 15px;
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #fff;
+            border-radius: 5px;
+            background-color: #222;
+            color: #fff;
+            box-sizing: border-box;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: #fff;
+        }
+
+        /* Botões */
+        .login-btn, .register-btn {
+            background-color: #fff;
+            color: #000;
+            border: none;
+            padding: 14px;
+            font-size: 16px;
+            border-radius: 5px;
+            width: 100%;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .login-btn:hover, .register-btn:hover {
+            background-color: #ddd;
+        }
+
+        /* Link para recuperação de senha */
+        .forgot-password {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #bbb;
+        }
+
+        .forgot-password a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+
+        /* Link para alternar entre login e registro */
+        .toggle-register {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #bbb;
+        }
+
+        .toggle-register a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .toggle-register a:hover {
+            text-decoration: underline;
+        }
+
+        /* Consultas de mídia para diferentes tamanhos de tela */
+        @media (max-width: 768px) {
+            /* Aumenta o padding e ajusta o layout para telas menores */
+            .login-container, .register-container {
+                padding: 25px;
+            }
+            .input-field {
+                padding: 14px;
+                font-size: 18px;
+            }
+            .login-btn, .register-btn {
+                padding: 16px;
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            /* Ajustes para telas muito pequenas, como smartphones */
+            .login-container, .register-container {
+                padding: 20px;
+            }
+            .input-field {
+                padding: 14px;
+                font-size: 16px;
+            }
+            .login-btn, .register-btn {
+                padding: 14px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Tela de Login -->
+    <div class="login-container" id="login-container">
+        <h2>Bem-vindo à Barbearia Hochsheidt</h2>
+        <form id="login-form">
+            <input type="text" id="username" class="input-field" placeholder="Usuário" required>
+            <input type="password" id="password" class="input-field" placeholder="Senha" required>
+            <button type="submit" class="login-btn">Entrar</button>
+        </form>
+        <div class="forgot-password">
+            <a href="#">Esqueceu a senha?</a>
+        </div>
+        <div class="toggle-register">
+            <a href="#" id="show-register">Ainda não tem uma conta? Registre-se!</a>
+        </div>
+    </div>
+
+    <!-- Tela de Registro -->
+    <div class="register-container" id="register-container" style="display: none;">
+        <h2>Registrar Nova Conta</h2>
+        <form id="register-form">
+            <input type="text" id="new-username" class="input-field" placeholder="Nome de Usuário" required>
+            <input type="email" id="email" class="input-field" placeholder="E-mail" required>
+            <input type="password" id="new-password" class="input-field" placeholder="Senha" required>
+            <input type="password" id="confirm-password" class="input-field" placeholder="Confirmar Senha" required>
+            <button type="submit" class="register-btn">Registrar</button>
+        </form>
+        <div class="toggle-register">
+            <a href="#" id="show-login">Já tem uma conta? Faça login!</a>
+        </div>
+    </div>
+
+    <script>
+        // Mostrar tela de registro ao clicar em "Registrar"
+        document.getElementById('show-register').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('login-container').style.display = 'none';
+            document.getElementById('register-container').style.display = 'block';
+        });
+
+        // Mostrar tela de login ao clicar em "Fazer login"
+        document.getElementById('show-login').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('register-container').style.display = 'none';
+            document.getElementById('login-container').style.display = 'block';
+        });
+
+        // Script de login (pode ser integrado com um backend real)
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+
+            // Validação simples de exemplo
+            if (username === "admin" && password === "senha123") {
+                alert("Login bem-sucedido!");
+                // Redirecionar para a página principal após login bem-sucedido
+                window.location.href = "dashboard.html";
+            } else {
+                alert("Usuário ou senha inválidos.");
+            }
+        });
+
+        // Script de registro (simulação)
+        document.getElementById('register-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var newUsername = document.getElementById('new-username').value;
+            var email = document.getElementById('email').value;
+            var newPassword = document.getElementById('new-password').value;
+            var confirmPassword = document.getElementById('confirm-password').value;
+
+            // Validação simples de exemplo
+            if (newPassword !== confirmPassword) {
+                alert("As senhas não coincidem!");
+                return;
+            }
+            alert("Conta registrada com sucesso!");
+            // Pode redirecionar ou limpar os campos após o registro
+        });
+    </script>
+</body>
+</html>
